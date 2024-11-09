@@ -12,7 +12,7 @@ import {
 const Home: React.FC = () => {
   return (
     <>
-      <section className="text-center py-12">
+      <section className="text-center pt-12">
         <h2 className="text-5xl font-semibold mb-6 text-indigo-700 tracking-tight">
           Discover Unmatched Plumbing & Mechanical Services
         </h2>
