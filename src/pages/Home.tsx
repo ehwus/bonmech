@@ -25,7 +25,7 @@ const Home: React.FC = () => {
               </h2>
               <div className="flex justify-center mb-8">
                 <img
-                  src="src/assets/faucet.jpg"
+                  src="faucet.jpg"
                   alt="Running water from a faucet"
                   className="w-64 h-64 object-cover rounded-full shadow-lg"
                 />
