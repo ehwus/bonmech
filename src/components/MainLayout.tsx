@@ -63,7 +63,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </nav>
       </header>
 
-      <main className="flex-grow container mx-auto bg-white m-0">
+      <main className="flex-grow container mx-auto bg-white m-0 p-5">
         {children} {/* Main content slot */}
       </main>
 

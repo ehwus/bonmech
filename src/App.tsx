@@ -1,10 +1,11 @@
 import MainLayout from "./components/MainLayout";
 import "./App.css";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <MainLayout>
-      <h1 className="text-3xl text-center font-bold underline">Hello world!</h1>
+      <Home />
     </MainLayout>
   );
 }
