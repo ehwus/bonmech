@@ -39,7 +39,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 Plumbing and Mechanical Systems
               </span>
             </div>
-            <ul className="flex space-x-6 text-lg font-medium">
+            <ul className="flex space-x-4 md:space-x-6 text-base md:text-lg font-medium">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <a
@@ -63,28 +63,34 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </nav>
       </header>
 
-      <main className="flex-grow max-w-7xl mx-auto p-4 md:p-8 bg-white rounded-lg shadow-md">
+      <main className="flex-grow container mx-auto bg-white m-0">
         {children} {/* Main content slot */}
       </main>
 
-      <footer className="bg-gray-800 text-white py-10 mt-8">
+      <footer className="bg-gray-900 text-white py-10">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 px-4 lg:px-8">
           <div className="text-center md:text-left">
-            <h2 className="text-xl font-bold mb-2">Hours of Operation</h2>
-            <p>9:00 am &ndash; 5:30 pm</p>
-            <p>Monday through Friday</p>
+            <h2 className="text-lg md:text-xl font-bold mb-2">
+              Hours of Operation
+            </h2>
+            <p className="text-sm md:text-base">9:00 am &ndash; 5:30 pm</p>
+            <p className="text-sm md:text-base">Monday through Friday</p>
           </div>
           <div className="text-center">
-            <h2 className="text-xl font-bold mb-2">
+            <h2 className="text-lg md:text-xl font-bold mb-2">
               After Hours and Emergency Service
             </h2>
-            <p className="text-sm">Available 24/7</p>
+            <p className="text-sm md:text-base">Available 24/7</p>
           </div>
           <div className="text-center md:text-right">
-            <h2 className="text-xl font-bold mb-2">Contact Us</h2>
-            <p className="text-sm">Phone/Text: {contactInfo.phone}</p>
-            <p className="text-sm">Email: {contactInfo.email}</p>
-            <p className="text-sm">Address: {contactInfo.address}</p>
+            <h2 className="text-lg md:text-xl font-bold mb-2">Contact Us</h2>
+            <p className="text-sm md:text-base">
+              Phone/Text: {contactInfo.phone}
+            </p>
+            <p className="text-sm md:text-base">Email: {contactInfo.email}</p>
+            <p className="text-sm md:text-base">
+              Address: {contactInfo.address}
+            </p>
           </div>
         </div>
       </footer>
