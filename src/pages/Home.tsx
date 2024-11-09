@@ -8,6 +8,7 @@ import {
   faFire,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
+import Review from "../components/Review";
 
 const Home: React.FC = () => {
   return (
@@ -39,6 +40,23 @@ const Home: React.FC = () => {
         >
           <FontAwesomeIcon icon={faPhone} className="mr-2" /> Call Us Now
         </a>
+      </section>
+
+      <section className="py-12">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <Review
+            name="Chris A."
+            content="As a major commercial landlord and property manager in Collingwood I can tell you that we have used Bonmech Inc. since 2013 and we have received very good service from them. Always there when you need them for urgent calls and their workmanship is unmatched in the Simcoe County area. Fantastic company, would highly recommend for all your plumbing & heating/cooling needs."
+          />
+          <Review
+            name="Bruce B."
+            content="Top-notch work! Highly recommend BONMECH INC. for any plumbing needs."
+          />
+          <Review
+            name="Tara D."
+            content="Very attentive customer service. Had an after hours issue and came right away to help us. Very professional. Would highly recommend, we will use them again going forward."
+          />
+        </div>
       </section>
 
       <section className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 py-12">
