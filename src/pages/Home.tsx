@@ -9,6 +9,7 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import Review from "../components/Review";
+import Form from "../components/Form";
 
 const Home: React.FC = () => {
   return (
@@ -36,14 +37,16 @@ const Home: React.FC = () => {
         </p>
         <a
           href="tel:(705)796-0243"
-          className="inline-block bg-green-600 text-white px-6 py-3 rounded-full shadow-md hover:bg-green-500 transition duration-300"
+          className="inline-block bg-green-600 text-white px-6 py-3 rounded-full shadow-md hover:bg-green-500 transition duration-300 mb-12"
         >
           <FontAwesomeIcon icon={faPhone} className="mr-2" /> Call Us Now
         </a>
       </section>
-
       <section className="py-12">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <h2 className="text-3xl font-bold mb-6 text-center">
+          What Our Customers Say
+        </h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-12">
           <Review
             name="Chris A."
             content="As a major commercial landlord and property manager in Collingwood I can tell you that we have used Bonmech Inc. since 2013 and we have received very good service from them. Always there when you need them for urgent calls and their workmanship is unmatched in the Simcoe County area. Fantastic company, would highly recommend for all your plumbing & heating/cooling needs."
@@ -58,11 +61,11 @@ const Home: React.FC = () => {
           />
         </div>
       </section>
-
+      <Form />
       <section className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 py-12">
         <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300">
           <h3 className="text-xl font-semibold mb-4">
-            <FontAwesomeIcon icon={faWater} className="text-indigo-600 mr-2" />{" "}
+            <FontAwesomeIcon icon={faWater} className="text-indigo-600 mr-2" />
             Leak Detection and Repair
           </h3>
           <p className="text-sm text-gray-700">
