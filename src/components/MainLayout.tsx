@@ -1,24 +1,7 @@
-import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock, faBell } from "@fortawesome/free-solid-svg-icons";
 
-interface NavLink {
-  name: string;
-  href: string;
-}
-
-interface ContactInfo {
-  phone: string;
-  email: string;
-  address: string;
-}
-
-const navLinks: NavLink[] = [
-  { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
-  { name: "Careers", href: "/careers" },
-  { name: "Contact Info", href: "/contact" },
-];
-
-const contactInfo: ContactInfo = {
+const contactInfo = {
   phone: "(705) 796-0243",
   email: "info@bonmech.ca",
   address: "2108 Fairgrounds Rd N, Unit D, Stayner, ON L0M 1S0",
@@ -39,25 +22,28 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 Plumbing and Mechanical Systems
               </span>
             </div>
-            <ul className="flex space-x-4 md:space-x-6 text-base md:text-lg font-medium">
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="hover:text-gray-100 transition-colors duration-300"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="hidden sm:block">
-              <a
-                href={`tel:${contactInfo.phone}`}
-                className="text-base font-semibold hover:text-gray-100 transition-colors duration-300"
-              >
-                Phone: {contactInfo.phone}
-              </a>
+            <div className="flex items-center space-x-8">
+              <div className="hidden sm:block">
+                <a
+                  href={`tel:${contactInfo.phone}`}
+                  className="text-base font-semibold hover:text-gray-100 transition-colors duration-300"
+                >
+                  Phone: {contactInfo.phone}
+                </a>
+              </div>
+              <div className="text-base font-medium hidden sm:flex items-center">
+                <FontAwesomeIcon
+                  icon={faClock}
+                  className="text-yellow-400 mr-2"
+                />
+                Mon-Fri, 9:00 am - 5:30 pm
+              </div>
+              <div className="text-base font-medium hidden sm:flex items-center">
+                <FontAwesomeIcon icon={faBell} className="text-red-400 mr-2" />
+                <span className="font-bold">
+                  24h Emergency Service Available
+                </span>
+              </div>
             </div>
           </div>
         </nav>
