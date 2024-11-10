@@ -1,12 +1,60 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 const AppointmentForm: React.FC = () => {
-  return (
+  const nameRef = useRef<HTMLInputElement>(null);
+  const serviceRef = useRef<HTMLSelectElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
+  const locationRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const formData = {
+      name: nameRef.current?.value,
+      service: serviceRef.current?.value,
+      email: emailRef.current?.value,
+      phone: phoneRef.current?.value,
+      location: locationRef.current?.value,
+      message: messageRef.current?.value,
+    };
+
+    try {
+      const response = await fetch("/submit-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        alert("There was an error submitting the form.");
+      }
+    } catch (error) {
+      console.error("Error submitting the form:", error);
+      alert("There was an error submitting the form.");
+    }
+  };
+
+  return isSubmitted ? (
+    <section className="bg-green-100 py-12 px-6 rounded-xl shadow-md">
+      <h2 className="text-3xl font-bold mb-6 text-center">Thank you!</h2>
+      <p className="text-center">
+        Your appointment request has been submitted successfully.
+      </p>
+    </section>
+  ) : (
     <section className="bg-gray-100 py-12 px-6 rounded-xl shadow-md">
       <h2 className="text-3xl font-bold mb-6 text-center">
         Book an Appointment
       </h2>
-      <form className="max-w-2xl mx-auto grid gap-4">
+      <form className="max-w-2xl mx-auto grid gap-4" onSubmit={handleSubmit}>
         <div>
           <label className="block text-gray-700 mb-2" htmlFor="name">
             Name
@@ -14,6 +62,7 @@ const AppointmentForm: React.FC = () => {
           <input
             type="text"
             id="name"
+            ref={nameRef}
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
             required
           />
@@ -24,6 +73,7 @@ const AppointmentForm: React.FC = () => {
           </label>
           <select
             id="service"
+            ref={serviceRef}
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
           >
             <option>Leak Detection and Repair</option>
@@ -42,6 +92,7 @@ const AppointmentForm: React.FC = () => {
           <input
             type="email"
             id="email"
+            ref={emailRef}
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
             required
           />
@@ -53,6 +104,7 @@ const AppointmentForm: React.FC = () => {
           <input
             type="tel"
             id="phone"
+            ref={phoneRef}
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
             required
           />
@@ -64,6 +116,7 @@ const AppointmentForm: React.FC = () => {
           <input
             type="text"
             id="location"
+            ref={locationRef}
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
             required
           />
@@ -74,6 +127,7 @@ const AppointmentForm: React.FC = () => {
           </label>
           <textarea
             id="message"
+            ref={messageRef}
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
             rows={4}
             required
