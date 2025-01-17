@@ -1,23 +1,19 @@
 import { serve } from "bun";
 import path from "path";
 import fs from "fs/promises";
-import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+import sgMail from "@sendgrid/mail";
+
+dotenv.config();
 
 const PORT = process.env.PORT || 3000;
-
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT),
-  secure: Number(process.env.SMTP_PORT) === 465, // true for 465, false for other ports
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 serve({
   port: PORT,
   async fetch(req) {
+    console.log("Received request:", req.method, req.url);
+
     const { pathname } = new URL(req.url);
 
     // Handle CORS preflight
@@ -42,6 +38,7 @@ serve({
         const body = await req.json();
         const { name, email, message, phone, location, service } = body;
 
+        // Basic validation
         if (!name || !email || !message) {
           return new Response("All fields are required.", {
             status: 400,
@@ -49,14 +46,26 @@ serve({
           });
         }
 
-        const mailOptions = {
-          from: process.env.FROM_EMAIL,
+        // Basic security: rate limiting (simple in-memory example)
+        const ip = req.headers.get("x-forwarded-for") || req.headers.get("remote-addr") || "127.0.0.1";
+        console.log("Client IP:", ip);
+
+        const rateLimit = rateLimiter(ip);
+        if (!rateLimit.allowed) {
+          return new Response("Too many requests. Please try again later.", {
+            status: 429,
+            headers: corsHeaders,
+          });
+        }
+
+        const msg = {
           to: process.env.TO_EMAIL,
+          from: process.env.FROM_EMAIL,
           subject: "New Web Form Submission",
           text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nLocation: ${location}\nService: ${service}\nMessage: ${message}`,
         };
 
-        await transporter.sendMail(mailOptions);
+        await sgMail.send(msg);
         return new Response("Email sent successfully", {
           status: 200,
           headers: corsHeaders,
@@ -71,7 +80,7 @@ serve({
     }
 
     try {
-      let filePath = path.join(
+      const filePath = path.join(
         __dirname,
         "dist",
         pathname === "/" ? "index.html" : pathname,
@@ -117,3 +126,32 @@ serve({
 });
 
 console.log(`Server running at http://localhost:${PORT}`);
+
+// Simple in-memory rate limiter
+const rateLimitMap = new Map();
+
+function rateLimiter(ip) {
+  const now = Date.now();
+  const windowTime = 60000; // 1 minute
+  const maxRequests = 5;
+
+  if (!rateLimitMap.has(ip)) {
+    rateLimitMap.set(ip, { count: 1, startTime: now });
+    return { allowed: true };
+  }
+
+  const { count, startTime } = rateLimitMap.get(ip);
+
+  if (now - startTime > windowTime) {
+    rateLimitMap.set(ip, { count: 1, startTime: now });
+    return { allowed: true };
+  }
+
+  if (count < maxRequests) {
+    rateLimitMap.set(ip, { count: count + 1, startTime });
+    return { allowed: true };
+  }
+
+  return { allowed: false };
+}
+
