@@ -4,19 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -n vite,server \"bun run dev:vite\" \"bun run dev:server\"",
-    "dev:vite": "bun vite",
-    "dev:server": "bun run server.ts --watch",
-    "build": "bun run build:vite",
-    "build:vite": "bun vite build --emptyOutDir",
-    "start": "bun run server.ts",
+    "dev": "bun vite",
+    "build": "bun vite build",
     "preview": "bun vite preview"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "@sendgrid/mail": "^8.1.4",
-    "dotenv": "^16.4.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -28,7 +22,6 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
-    "concurrently": "^9.1.0",
     "eslint": "^9.13.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",

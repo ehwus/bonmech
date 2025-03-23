@@ -48,3 +48,45 @@ export default tseslint.config({
   },
 })
 ```
+
+# BonMech - Static Website
+
+This is a static website for BonMech built with React + TypeScript + Vite.
+
+## Features
+
+- Fast, static site built with Vite
+- Contact form powered by Formspree
+- Responsive design with Tailwind CSS
+
+## Setup
+
+1. Install dependencies:
+```bash
+bun install
+```
+
+2. Configure environment variables:
+   - Create a `.env` file in the root directory (copy from `.env.example`)
+   - Replace the `VITE_FORMSPREE_ID` value with your actual Formspree form ID
+   - You can create a form at [formspree.io](https://formspree.io)
+
+## Development
+
+```bash
+bun dev
+```
+
+## Building for Production
+
+```bash
+bun build
+```
+
+The build output will be in the `dist` directory, which can be deployed to any static hosting service.
+
+## Deployment
+
+Deploy the `dist` directory to any static hosting service like Vercel, Netlify, GitHub Pages, etc.
+
+When deploying to hosting services, make sure to configure the environment variable `VITE_FORMSPREE_ID` in their respective environment settings.
