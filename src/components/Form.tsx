@@ -10,17 +10,10 @@ const AppointmentForm: React.FC = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Get Formspree ID from environment variables
-  const FORMSPREE_FORM_ID = import.meta.env.VITE_FORMSPREE_ID;
+  const FORMSPREE_FORM_ID = "mqapqwdv";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!FORMSPREE_FORM_ID) {
-      console.error("Formspree ID not found in environment variables");
-      alert("Form submission is not properly configured. Please contact the administrator.");
-      return;
-    }
 
     const formData = {
       name: nameRef.current?.value,
@@ -32,13 +25,16 @@ const AppointmentForm: React.FC = () => {
     };
 
     try {
-      const response = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `https://formspree.io/f/${FORMSPREE_FORM_ID}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
         },
-        body: JSON.stringify(formData),
-      });
+      );
 
       if (response.ok) {
         setIsSubmitted(true);
