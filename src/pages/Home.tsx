@@ -41,7 +41,7 @@ const Home: React.FC = () => {
                 quality and commitment to project excellence.
               </p>
               <a
-                href="tel:(705)796-0243"
+                href="tel:+1(705)796-0243"
                 className="inline-block bg-green-600 text-white px-6 py-3 rounded-full shadow-md hover:bg-green-500 transition duration-300"
               >
                 <FontAwesomeIcon icon={faPhone} className="mr-2" /> Call Us Now

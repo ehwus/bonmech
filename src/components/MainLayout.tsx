@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faBell } from "@fortawesome/free-solid-svg-icons";
 
 const contactInfo = {
-  phone: "(705) 796-0243",
+  phone: "+1 (705) 796-0243",
   email: "info@bonmech.ca",
   address: "2108 Fairgrounds Rd N, Unit D, Stayner, ON L0M 1S0",
 };
@@ -67,6 +67,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               After Hours and Emergency Service
             </h2>
             <p className="text-sm md:text-base">Available 24/7</p>
+            <p className="text-sm md:text-base">{contactInfo.phone}</p>
           </div>
           <div className="text-center md:text-right">
             <h2 className="text-lg md:text-xl font-bold mb-2">Contact Us</h2>
