@@ -2,11 +2,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 interface ReviewProps {
-  name: string;
   content: string;
 }
 
-export default ({ name, content }: ReviewProps) => {
+export default ({ content }: ReviewProps) => {
   return (
     <div className="bg-gray-100 border border-gray-200 rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300">
       <div className="flex items-center mb-4">
@@ -18,8 +17,7 @@ export default ({ name, content }: ReviewProps) => {
           />
         ))}
       </div>
-      <p className="text-sm text-gray-700 italic mb-4">"{content}"</p>
-      <p className="text-right text-md font-semibold">- {name}</p>
+      <p className="text-sm text-gray-700 italic">"{content}"</p>
     </div>
   );
 };

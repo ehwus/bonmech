@@ -54,16 +54,19 @@ const Home: React.FC = () => {
               What Our Customers Say
             </h2>
             <Review
-              name="Chris A."
-              content="As a major commercial landlord and property manager in Collingwood, I can tell you that we have used Bonmech Inc. since 2013, and we have received very good service from them. Always there when you need them for urgent calls, and their workmanship is unmatched in the Simcoe County area. Fantastic company, would highly recommend for all your plumbing & heating/cooling needs."
+              content="Great customer service and knowledge. Andrew was fantastic and was efficient in the job we required. I'd highly recommend these folks!"
             />
             <Review
-              name="Bruce B."
-              content="Top-notch work! Highly recommend BONMECH INC. for any plumbing needs."
+              content="Fast and efficient, completed in 1 visit. Very Happy!"
             />
             <Review
-              name="Tara D."
-              content="Very attentive customer service. Had an after-hours issue and came right away to help us. Very professional. Would highly recommend; we will use them again going forward."
+              content="Our issue was a winter water line blow out in our shower, and replacement of the cracked drain. Our tech was Andrew, and he arrived promptly and had the job done in under 2 hours. Booking in with the office was a painless experience. Overall experience was super. Thank you!"
+            />
+            <Review
+              content="Very impressed with the communication and promptness of service. They showed up on time and did a very thorough job to fix our plumbing issue as well as cleaned up afterwards. The job was a little more than expected but they completed it in a timely and professional manner. Would highly recommend them and definitely use them again!"
+            />
+            <Review
+              content="We are a GC that works with BonMech on a regular basis for all our plumbing, mechanical and gas needs. Bonmech is a pleasure to work with. There is always a high level of professionalism and attention to detail, not to mention the friendly service. They are quick to act when needed in emergencies, and are always reliable."
             />
           </div>
         </div>
