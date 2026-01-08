@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Review from "../components/Review";
 import Form from "../components/Form";
+import InstagramFeed from "../components/InstagramFeed";
 
 const Home: React.FC = () => {
   return (
@@ -163,6 +164,10 @@ const Home: React.FC = () => {
           <div className="flex flex-col justify-center">
             <Form />
           </div>
+        </div>
+        {/* Third Row: Instagram Feed */}
+        <div className="mt-12">
+          <InstagramFeed />
         </div>
       </div>
     </div>

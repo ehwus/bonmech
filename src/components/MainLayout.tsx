@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faBell } from "@fortawesome/free-solid-svg-icons";
+import { InstagramIcon, FacebookIcon, HomeStarsIcon } from "./SocialIcons";
 
 const contactInfo = {
   phone: "+1 (705) 796-0243",
@@ -54,30 +55,63 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       </main>
 
       <footer className="bg-gray-900 text-white py-10">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 px-4 lg:px-8">
-          <div className="text-center md:text-left">
-            <h2 className="text-lg md:text-xl font-bold mb-2">
-              Hours of Operation
-            </h2>
-            <p className="text-sm md:text-base">9:00 am &ndash; 5:30 pm</p>
-            <p className="text-sm md:text-base">Monday through Friday</p>
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            <div className="text-center md:text-left">
+              <h2 className="text-lg md:text-xl font-bold mb-2">
+                Hours of Operation
+              </h2>
+              <p className="text-sm md:text-base">9:00 am &ndash; 5:30 pm</p>
+              <p className="text-sm md:text-base">Monday through Friday</p>
+            </div>
+            <div className="text-center">
+              <h2 className="text-lg md:text-xl font-bold mb-2">
+                After Hours and Emergency Service
+              </h2>
+              <p className="text-sm md:text-base">Available 24/7</p>
+              <p className="text-sm md:text-base">{contactInfo.phone}</p>
+            </div>
+            <div className="text-center md:text-right">
+              <h2 className="text-lg md:text-xl font-bold mb-2">Contact Us</h2>
+              <p className="text-sm md:text-base">
+                Phone/Text: {contactInfo.phone}
+              </p>
+              <p className="text-sm md:text-base">Email: {contactInfo.email}</p>
+              <p className="text-sm md:text-base">
+                Address: {contactInfo.address}
+              </p>
+            </div>
           </div>
-          <div className="text-center">
-            <h2 className="text-lg md:text-xl font-bold mb-2">
-              After Hours and Emergency Service
-            </h2>
-            <p className="text-sm md:text-base">Available 24/7</p>
-            <p className="text-sm md:text-base">{contactInfo.phone}</p>
-          </div>
-          <div className="text-center md:text-right">
-            <h2 className="text-lg md:text-xl font-bold mb-2">Contact Us</h2>
-            <p className="text-sm md:text-base">
-              Phone/Text: {contactInfo.phone}
-            </p>
-            <p className="text-sm md:text-base">Email: {contactInfo.email}</p>
-            <p className="text-sm md:text-base">
-              Address: {contactInfo.address}
-            </p>
+          <div className="mt-8 pt-6 border-t border-gray-700">
+            <div className="flex justify-center items-center space-x-6">
+              <a
+                href="https://www.instagram.com/bonmech_southgeorgianbay/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-pink-400 transition-colors duration-300"
+                aria-label="Follow us on Instagram"
+              >
+                <InstagramIcon className="w-8 h-8" />
+              </a>
+              <a
+                href="https://www.facebook.com/61581214102343/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-blue-400 transition-colors duration-300"
+                aria-label="Follow us on Facebook"
+              >
+                <FacebookIcon className="w-8 h-8" />
+              </a>
+              <a
+                href="https://www.homestars.com/profile/2995026-bonmech-inc/reviews?page=2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-yellow-400 transition-colors duration-300"
+                aria-label="Read our reviews on HomeStars"
+              >
+                <HomeStarsIcon className="w-8 h-8" />
+              </a>
+            </div>
           </div>
         </div>
       </footer>
