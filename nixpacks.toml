@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["bun"]
+
+[phases.install]
+cmds = ["bun install", "bun add -g serve"]
+
+[phases.build]
+cmds = ["bun run build"]
+
+[start]
+cmd = "serve -s dist -l $PORT"
